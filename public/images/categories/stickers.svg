@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" fill="none">
+  <defs>
+    <linearGradient id="stick-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff"/>
+      <stop offset="100%" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="s1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="s2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <linearGradient id="s3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="220" rx="16" fill="url(#stick-bg)"/>
+  
+  <!-- Sticker 1 (Die Cut Star/Burst) -->
+  <g transform="translate(45, 30) rotate(-8)">
+    <circle cx="55" cy="55" r="50" fill="white" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.08))"/>
+    <circle cx="55" cy="55" r="44" fill="url(#s1)"/>
+    <path d="M55 25L62 43L81 44L66 56L71 74L55 63L39 74L44 56L29 44L48 43Z" fill="white"/>
+  </g>
+
+  <!-- Sticker 2 (Badge) -->
+  <g transform="translate(145, 60) rotate(12)">
+    <rect width="105" height="105" rx="26" fill="white" filter="drop-shadow(0 8px 12px rgba(0,0,0,0.12))"/>
+    <rect x="6" y="6" width="93" height="93" rx="20" fill="url(#s2)"/>
+    <circle cx="52.5" cy="52.5" r="32" fill="white" opacity="0.25"/>
+    <text x="52.5" y="48" font-family="system-ui" font-weight="900" font-size="15" fill="white" text-anchor="middle">SUPER</text>
+    <text x="52.5" y="66" font-family="system-ui" font-weight="900" font-size="13" fill="#fef08a" text-anchor="middle">QUALITY</text>
+  </g>
+
+  <!-- Sticker 3 (Coffee/Smile) -->
+  <g transform="translate(90, 110) rotate(-4)">
+    <rect width="80" height="80" rx="40" fill="white" filter="drop-shadow(0 6px 10px rgba(0,0,0,0.1))"/>
+    <rect x="5" y="5" width="70" height="70" rx="35" fill="url(#s3)"/>
+    <circle cx="30" cy="35" r="4" fill="#78350f"/>
+    <circle cx="50" cy="35" r="4" fill="#78350f"/>
+    <path d="M28 47Q40 60 52 47" stroke="#78350f" stroke-width="4" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

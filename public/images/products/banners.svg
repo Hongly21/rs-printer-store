@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#f0f9ff"/>
+  <!-- Heavy Duty Vinyl Banner -->
+  <g transform="translate(50, 45)">
+    <!-- Top and Bottom Pole/Grommet Bar -->
+    <rect width="300" height="190" rx="6" fill="#0284c7" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.18))"/>
+    
+    <!-- Metal eyelets with reinforced stitching -->
+    <g fill="#cbd5e1" stroke="#0f172a" stroke-width="2">
+      <circle cx="15" cy="15" r="4.5"/>
+      <circle cx="150" cy="15" r="4.5"/>
+      <circle cx="285" cy="15" r="4.5"/>
+      <circle cx="15" cy="175" r="4.5"/>
+      <circle cx="150" cy="175" r="4.5"/>
+      <circle cx="285" cy="175" r="4.5"/>
+    </g>
+    
+    <!-- Outer stitched border line -->
+    <rect x="8" y="8" width="284" height="174" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="4 4"/>
+    
+    <!-- Banner Content -->
+    <text x="150" y="70" font-family="system-ui" font-weight="900" font-size="24" fill="#ffffff" text-anchor="middle" letter-spacing="2">OUTDOOR BANNER</text>
+    <text x="150" y="110" font-family="system-ui" font-weight="800" font-size="30" fill="#fef08a" text-anchor="middle">510 GSM HEAVY-DUTY</text>
+    <rect x="75" y="130" width="150" height="28" rx="6" fill="#ffffff"/>
+    <text x="150" y="149" font-family="system-ui" font-weight="800" font-size="12" fill="#0284c7" text-anchor="middle">WEATHERPROOF &amp; UV RESISTANT</text>
+  </g>
+</svg>

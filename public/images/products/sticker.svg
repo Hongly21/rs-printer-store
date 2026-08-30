@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="p-stick-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="p-s1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="p-s2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="16" fill="url(#p-stick-bg)"/>
+  
+  <!-- Peel back paper mockup -->
+  <g transform="translate(60, 40) rotate(-6)">
+    <!-- White Die-cut Border -->
+    <rect width="140" height="140" rx="36" fill="white" filter="drop-shadow(0 12px 24px rgba(0,0,0,0.12))"/>
+    <!-- Graphic inner -->
+    <rect x="8" y="8" width="124" height="124" rx="28" fill="url(#p-s1)"/>
+    <!-- Icon / Rocket -->
+    <path d="M70 30 C 85 45, 95 70, 95 95 L 70 85 L 45 95 C 45 70, 55 45, 70 30 Z" fill="white"/>
+    <circle cx="70" cy="55" r="8" fill="#38bdf8"/>
+    <path d="M52 80 L 38 95 L 50 100 Z" fill="#fb923c"/>
+    <path d="M88 80 L 102 95 L 90 100 Z" fill="#fb923c"/>
+    <path d="M62 90 L 70 115 L 78 90 Z" fill="#f87171"/>
+  </g>
+
+  <!-- Sticker 2 (Round Badge) -->
+  <g transform="translate(200, 70) rotate(8)">
+    <circle cx="75" cy="75" r="70" fill="white" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.15))"/>
+    <circle cx="75" cy="75" r="62" fill="url(#p-s2)"/>
+    <circle cx="75" cy="75" r="48" fill="none" stroke="white" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="75" y="68" font-family="system-ui" font-weight="900" font-size="16" fill="white" text-anchor="middle">PREMIUM</text>
+    <text x="75" y="90" font-family="system-ui" font-weight="800" font-size="12" fill="#fffbeb" text-anchor="middle">VINYL PRINT</text>
+    <!-- Peel-off corner effect -->
+    <path d="M125 35 L 140 50 L 125 50 Z" fill="#d1d5db"/>
+  </g>
+</svg>

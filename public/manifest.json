@@ -1,0 +1,32 @@
+{
+  "name": "PrintCraft Studio - ហាងបោះពុម្ព",
+  "short_name": "PrintCraft",
+  "description": "Custom sticker printing, product packaging labels, archival photo prints, marketing flyers, business cards, and outdoor vinyl banners in Cambodia.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0284c7",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "business", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

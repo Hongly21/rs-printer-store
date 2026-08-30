@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#fdf2f8"/>
+  <g transform="translate(120, 30)">
+    <!-- Base -->
+    <ellipse cx="80" cy="220" rx="75" ry="18" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="65" y="210" width="30" height="15" rx="3" fill="#64748b"/>
+    <!-- Acrylic Body with bevel -->
+    <path d="M35 50 Q 80 20 125 50 Q 145 110 120 205 L 40 205 Q 15 110 35 50 Z" fill="#fbcfe8" fill-opacity="0.4" stroke="#ec4899" stroke-width="3" filter="drop-shadow(0 10px 20px rgba(236,72,153,0.2))"/>
+    <circle cx="80" cy="100" r="32" fill="#ec4899"/>
+    <!-- Cute Mascot / Art -->
+    <circle cx="68" cy="95" r="4" fill="white"/>
+    <circle cx="92" cy="95" r="4" fill="white"/>
+    <path d="M72 110 Q 80 120 88 110" stroke="white" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M50 80 Q 40 60 55 60" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M110 80 Q 120 60 105 60" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <text x="80" y="165" font-family="system-ui" font-weight="900" font-size="12" fill="#be185d" text-anchor="middle">ACRYLIC STANDEE</text>
+    <text x="80" y="180" font-family="system-ui" font-weight="600" font-size="9" fill="#9d174d" text-anchor="middle">3mm Cast Acrylic</text>
+  </g>
+</svg>

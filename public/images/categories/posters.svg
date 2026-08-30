@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" fill="none">
+  <rect width="300" height="220" rx="16" fill="#faf5ff"/>
+  <!-- Poster in frame -->
+  <g transform="translate(85, 20)">
+    <!-- Shadow & Paper -->
+    <rect width="130" height="180" rx="4" fill="#1e1b4b" filter="drop-shadow(0 10px 20px rgba(0,0,0,0.18))"/>
+    <!-- Poster graphic -->
+    <circle cx="65" cy="80" r="38" fill="#c084fc" opacity="0.8"/>
+    <circle cx="65" cy="80" r="24" fill="#fb7185"/>
+    <path d="M20 140 Q 65 100 110 140" stroke="#fef08a" stroke-width="4" fill="none"/>
+    <text x="65" y="45" font-family="system-ui" font-weight="900" font-size="14" fill="#ffffff" text-anchor="middle" letter-spacing="2">MUSIC FEST</text>
+    <text x="65" y="160" font-family="system-ui" font-weight="600" font-size="9" fill="#e9d5ff" text-anchor="middle">LIVE IN CONCERT 2026</text>
+  </g>
+</svg>

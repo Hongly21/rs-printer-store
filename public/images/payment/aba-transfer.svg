@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" fill="none">
+  <rect width="320" height="240" rx="16" fill="#f0fdf4"/>
+  <g transform="translate(60, 25)">
+    <!-- Credit / Bank Card -->
+    <rect width="200" height="125" rx="12" fill="#047857" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.12))"/>
+    <!-- Chip -->
+    <rect x="20" y="30" width="30" height="22" rx="4" fill="#fbbf24"/>
+    <rect x="24" y="34" width="22" height="14" rx="2" fill="none" stroke="#b45309" stroke-width="1.5"/>
+    <!-- Account text -->
+    <text x="20" y="80" font-family="monospace" font-weight="700" font-size="13" fill="#ffffff" letter-spacing="2">001 889 922</text>
+    <text x="20" y="105" font-family="system-ui" font-weight="700" font-size="10" fill="#a7f3d0">PRINTCRAFT STUDIO CO.</text>
+  </g>
+  <text x="160" y="195" font-family="system-ui" font-weight="700" font-size="14" fill="#0f172a" text-anchor="middle">Direct Bank Transfer</text>
+  <text x="160" y="215" font-family="system-ui" font-weight="500" font-size="11" fill="#64748b" text-anchor="middle">ABA Bank &amp; ACLEDA Bank</text>
+</svg>

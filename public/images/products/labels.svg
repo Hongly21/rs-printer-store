@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#faf5ff"/>
+  <!-- Bottle Jar with Roll Labels -->
+  <g transform="translate(130, 35)">
+    <!-- Bottle glass -->
+    <rect x="30" y="55" width="85" height="150" rx="16" fill="#f3e8ff" stroke="#a855f7" stroke-width="2"/>
+    <!-- Bottle cap -->
+    <rect x="42" y="25" width="60" height="30" rx="6" fill="#6b21a8"/>
+    <!-- Label -->
+    <rect x="25" y="85" width="95" height="85" rx="6" fill="#ffffff" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.1))"/>
+    <rect x="33" y="93" width="79" height="69" rx="4" fill="#faf5ff" stroke="#c084fc" stroke-width="1.5"/>
+    <circle cx="72.5" cy="115" r="12" fill="#d946ef"/>
+    <text x="72.5" y="119" font-family="system-ui" font-weight="900" font-size="11" fill="white" text-anchor="middle">BOTANIC</text>
+    <text x="72.5" y="142" font-family="system-ui" font-weight="800" font-size="10" fill="#581c87" text-anchor="middle">ESSENCE OIL</text>
+    <text x="72.5" y="153" font-family="system-ui" font-weight="600" font-size="7" fill="#a855f7" text-anchor="middle">100ml / 3.4 fl oz</text>
+  </g>
+  <!-- Label sheets on left -->
+  <g transform="translate(45, 110) rotate(-15)">
+    <rect width="70" height="90" rx="4" fill="white" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.08))"/>
+    <circle cx="25" cy="30" r="14" fill="#e9d5ff"/>
+    <circle cx="50" cy="30" r="14" fill="#e9d5ff"/>
+    <circle cx="25" cy="65" r="14" fill="#e9d5ff"/>
+    <circle cx="50" cy="65" r="14" fill="#e9d5ff"/>
+  </g>
+</svg>

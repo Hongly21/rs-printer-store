@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" fill="none">
+  <rect width="300" height="220" rx="16" fill="#f8fafc"/>
+  <!-- Card 1 back -->
+  <g transform="translate(50, 65) rotate(-6)">
+    <rect width="180" height="105" rx="8" fill="#0f172a" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.15))"/>
+    <circle cx="90" cy="45" r="18" fill="#38bdf8" opacity="0.3"/>
+    <text x="90" y="50" font-family="system-ui" font-weight="800" font-size="14" fill="#38bdf8" text-anchor="middle">STUDIO</text>
+    <rect x="50" y="75" width="80" height="4" rx="2" fill="#64748b"/>
+  </g>
+  <!-- Card 2 front -->
+  <g transform="translate(90, 80) rotate(6)">
+    <rect width="180" height="105" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="drop-shadow(0 12px 20px rgba(0,0,0,0.1))"/>
+    <rect x="20" y="22" width="28" height="28" rx="6" fill="#0284c7"/>
+    <circle cx="34" cy="36" r="6" fill="#ffffff"/>
+    <text x="56" y="32" font-family="system-ui" font-weight="700" font-size="12" fill="#0f172a">ALEX MORGAN</text>
+    <text x="56" y="44" font-family="system-ui" font-weight="500" font-size="8" fill="#64748b">Creative Director</text>
+    <line x1="20" y1="58" x2="160" y2="58" stroke="#f1f5f9" stroke-width="1.5"/>
+    <text x="20" y="72" font-family="system-ui" font-weight="500" font-size="8" fill="#475569">+1 (555) 019-2834</text>
+    <text x="20" y="85" font-family="system-ui" font-weight="500" font-size="8" fill="#0284c7">alex@designstudio.com</text>
+  </g>
+</svg>

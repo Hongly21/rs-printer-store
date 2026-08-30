@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <rect width="42" height="42" rx="10" y="3" fill="#0284c7"/>
+  <path d="M12 16H30V32H12V16Z" fill="white" opacity="0.9"/>
+  <rect x="15" y="11" width="12" height="5" rx="1.5" fill="#bae6fd"/>
+  <rect x="15" y="32" width="12" height="6" rx="1.5" fill="#38bdf8"/>
+  <circle cx="27" cy="20" r="1.5" fill="#0284c7"/>
+  <circle cx="16" cy="24" r="2" fill="#38bdf8"/>
+  <circle cx="21" cy="24" r="2" fill="#f59e0b"/>
+  <circle cx="26" cy="24" r="2" fill="#ec4899"/>
+  <text x="50" y="27" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="20" fill="#0f172a">Print<tspan fill="#0284c7">Craft</tspan></text>
+  <text x="50" y="39" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="9" fill="#64748b" letter-spacing="1.5">STUDIO &amp; PRINTING</text>
+</svg>

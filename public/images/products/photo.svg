@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#f0fdf4"/>
+  <!-- Photo frames spread -->
+  <g transform="translate(70, 45) rotate(-8)">
+    <rect width="140" height="175" rx="6" fill="#ffffff" filter="drop-shadow(0 12px 24px rgba(0,0,0,0.12))"/>
+    <rect x="10" y="10" width="120" height="125" rx="4" fill="#6ee7b7"/>
+    <circle cx="100" cy="40" r="14" fill="#fef08a"/>
+    <path d="M15 115 L 50 65 L 85 105 L 105 85 L 125 125 Z" fill="#047857"/>
+    <text x="70" y="155" font-family="system-ui" font-weight="700" font-size="10" fill="#64748b" text-anchor="middle">SUMMER VACATION</text>
+  </g>
+  <g transform="translate(190, 60) rotate(10)">
+    <rect width="145" height="180" rx="6" fill="#ffffff" filter="drop-shadow(0 14px 28px rgba(0,0,0,0.14))"/>
+    <rect x="10" y="10" width="125" height="130" rx="4" fill="#38bdf8"/>
+    <circle cx="45" cy="45" r="15" fill="#f59e0b"/>
+    <path d="M15 120 L 55 70 L 95 110 L 115 90 L 135 130 Z" fill="#0284c7"/>
+    <text x="72" y="160" font-family="system-ui" font-weight="700" font-size="10" fill="#64748b" text-anchor="middle">ARCHIVAL HD PRINT</text>
+  </g>
+</svg>

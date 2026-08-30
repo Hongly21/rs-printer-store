@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" fill="none">
+  <rect width="300" height="220" rx="16" fill="#fdf4ff"/>
+  <!-- Bottle Jar with Label -->
+  <g transform="translate(100, 25)">
+    <!-- Jar Body -->
+    <rect x="25" y="45" width="75" height="120" rx="14" fill="#fae8ff" stroke="#d946ef" stroke-width="2"/>
+    <!-- Lid -->
+    <rect x="35" y="25" width="55" height="20" rx="4" fill="#a21caf"/>
+    <!-- Label -->
+    <rect x="20" y="70" width="85" height="70" rx="6" fill="#ffffff" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.08))"/>
+    <rect x="28" y="78" width="69" height="54" rx="4" fill="#fdf2f8" stroke="#f43f5e" stroke-dasharray="2 2"/>
+    <text x="62.5" y="98" font-family="system-ui" font-weight="800" font-size="10" fill="#be185d" text-anchor="middle">ORGANIC</text>
+    <text x="62.5" y="112" font-family="system-ui" font-weight="700" font-size="12" fill="#831843" text-anchor="middle">HONEY</text>
+    <line x1="40" y1="120" x2="85" y2="120" stroke="#f472b6" stroke-width="1.5"/>
+  </g>
+  <!-- Label roll in background -->
+  <circle cx="215" cy="140" r="35" fill="#f5d0fe"/>
+  <circle cx="215" cy="140" r="14" fill="#ffffff"/>
+  <path d="M215 175 C 240 175, 270 170, 280 185" stroke="#c084fc" stroke-width="8" stroke-linecap="round"/>
+</svg>
