@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Menu, X, Phone, MessageSquare, ArrowRight } from 'lucide-react';
+import { ShoppingBag, Menu, X, Phone, MessageSquare, ArrowRight, Printer } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { shopConfig } from '@/data/shop';
@@ -89,12 +89,12 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-sky-400 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
-              P
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-sky-500 flex items-center justify-center text-white shadow-md shadow-brand-600/20 group-hover:scale-105 transition-transform">
+              <Printer className="w-5 h-5" />
             </div>
             <div>
               <span className="text-xl font-black text-slate-900 tracking-tight flex items-center">
-                Print<span className="text-brand-600">Craft</span>
+                RS<span className="text-brand-600 ml-1.5">Printer</span>
               </span>
               <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider -mt-1">
                 {tObj('STUDIO & PRINT SHOP', 'រោងពុម្ព & ស្ទូឌីយោ')}

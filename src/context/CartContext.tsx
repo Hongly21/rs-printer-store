@@ -14,7 +14,8 @@ interface CartContextType {
     config: SelectedProductConfig,
     unitPrice: number,
     totalPrice: number,
-    file?: UploadedFile
+    file?: UploadedFile,
+    productNameKm?: string
   ) => void;
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
@@ -70,13 +71,15 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     config: SelectedProductConfig,
     unitPrice: number,
     totalPrice: number,
-    file?: UploadedFile
+    file?: UploadedFile,
+    productNameKm?: string
   ) => {
     const newItem: CartItem = {
       id: `${productId}-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
       productId,
       productSlug,
       productName,
+      productNameKm,
       productImage,
       config,
       unitPrice,

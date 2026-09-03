@@ -18,7 +18,9 @@ import {
   Edit3,
   Paperclip,
   CheckCircle2,
+  Loader2,
 } from 'lucide-react';
+import { startNavigationLoading, stopNavigationLoading } from '@/components/common/NavigationProgressBar';
 
 export const OrderReview: React.FC = () => {
   const router = useRouter();
@@ -32,12 +34,14 @@ export const OrderReview: React.FC = () => {
 
   const handlePlaceOrder = () => {
     setIsSubmitting(true);
+    startNavigationLoading();
     const createdOrder = submitOrder();
 
     if (createdOrder) {
       router.push(`/order/success?orderNumber=${createdOrder.orderNumber}`);
     } else {
       setIsSubmitting(false);
+      stopNavigationLoading();
     }
   };
 
@@ -262,8 +266,11 @@ export const OrderReview: React.FC = () => {
       <div className="flex items-center justify-between gap-4">
         <button
           type="button"
-          onClick={() => router.push('/checkout/payment')}
-          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+          onClick={() => {
+            startNavigationLoading();
+            router.push('/checkout/payment');
+          }}
+          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
         >
           {t('checkout.backToPayment')}
         </button>
@@ -274,7 +281,11 @@ export const OrderReview: React.FC = () => {
           disabled={isSubmitting}
           className="px-10 py-4 bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] text-white font-black text-base rounded-2xl shadow-xl shadow-emerald-600/25 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-70"
         >
-          <CheckCircle2 className="w-5 h-5" />
+          {isSubmitting ? (
+            <Loader2 className="w-5 h-5 animate-spin" />
+          ) : (
+            <CheckCircle2 className="w-5 h-5" />
+          )}
           <span>{isSubmitting ? t('checkout.placingOrder') : t('checkout.placeOrder')}</span>
         </button>
       </div>

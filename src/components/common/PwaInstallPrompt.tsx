@@ -72,11 +72,11 @@ export const PwaInstallPrompt: React.FC = () => {
       <div className="bg-slate-900 text-white rounded-2xl p-4 shadow-2xl border border-slate-700/80 flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-sky-400 flex items-center justify-center text-white font-black text-lg shrink-0 shadow-md">
-            P
+            RS
           </div>
           <div className="min-w-0">
             <h4 className="font-extrabold text-sm text-white truncate">
-              {tObj('Install PrintCraft App', 'ដំឡើងកម្មវិធី PrintCraft')}
+              {tObj('Install RS Printer App', 'ដំឡើងកម្មវិធី RS Printer')}
             </h4>
             <p className="text-[11px] text-slate-300 leading-tight line-clamp-1">
               {tObj(

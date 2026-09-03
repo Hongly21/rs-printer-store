@@ -56,11 +56,11 @@ export const PriceSummary: React.FC<PriceSummaryProps> = ({
           </span>
         </div>
 
-        {calculation.breakdown.materialAddon > 0 && (
+        {calculation.breakdown.materialTotal > 0 && (
           <div className="flex justify-between">
             <span>{t('configurator.materialUpgrade')}</span>
             <span className="font-semibold text-slate-800">
-              +{formatPrice(calculation.breakdown.materialAddon)}
+              +{formatPrice(calculation.breakdown.materialTotal)}
             </span>
           </div>
         )}

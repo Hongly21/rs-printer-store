@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCheckout } from '@/context/CheckoutContext';
 import { useLanguage } from '@/context/LanguageContext';
-import { User, Phone, MessageSquare, ArrowRight, ShieldCheck, FileText } from 'lucide-react';
+import { User, Phone, MessageSquare, ArrowRight, ShieldCheck, FileText, Loader2 } from 'lucide-react';
+import { startNavigationLoading } from '@/components/common/NavigationProgressBar';
 
 export const CustomerForm: React.FC = () => {
   const router = useRouter();
@@ -12,6 +13,7 @@ export const CustomerForm: React.FC = () => {
   const { t } = useLanguage();
   const [errors, setErrors] = useState<Partial<Record<string, string>>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleBlur = (field: string) => {
     setTouched((prev) => ({ ...prev, [field]: true }));
@@ -29,6 +31,8 @@ export const CustomerForm: React.FC = () => {
       return;
     }
 
+    setIsSubmitting(true);
+    startNavigationLoading();
     router.push('/checkout/delivery');
   };
 
@@ -167,18 +171,23 @@ export const CustomerForm: React.FC = () => {
       <div className="flex items-center justify-between gap-4">
         <button
           type="button"
-          onClick={() => router.push('/cart')}
-          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+          onClick={() => {
+            startNavigationLoading();
+            router.push('/cart');
+          }}
+          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
         >
           {t('checkout.backToCart')}
         </button>
 
         <button
           type="submit"
-          className="px-8 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-brand-600/25 transition-all flex items-center gap-2"
+          disabled={isSubmitting}
+          className="px-8 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-brand-600/25 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-75"
         >
+          {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
           <span>{t('checkout.continueToDelivery')}</span>
-          <ArrowRight className="w-4 h-4" />
+          {!isSubmitting && <ArrowRight className="w-4 h-4" />}
         </button>
       </div>
     </form>

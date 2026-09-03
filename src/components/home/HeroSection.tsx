@@ -126,7 +126,10 @@ export const HeroSection: React.FC = () => {
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                   <span className="font-semibold text-slate-700">{t('hero.uploadLabel')}</span>
-                  <span className="font-bold text-emerald-600">✓ my-logo.png (3.2 MB)</span>
+                  <span className="font-bold text-emerald-600 flex items-center gap-1">
+                    <CheckCircle className="w-3.5 h-3.5 shrink-0" />
+                    <span>my-logo.png (3.2 MB)</span>
+                  </span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
                   <span className="font-semibold text-slate-700">{t('hero.priceLabel')}</span>

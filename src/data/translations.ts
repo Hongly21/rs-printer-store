@@ -204,7 +204,7 @@ export const translations = {
     },
     // Why Choose Us
     whyUs: {
-      badge: 'Why PrintCraft Studio',
+      badge: 'Why RS Printer',
       title: 'Built for Businesses, Creators & Individuals',
       subtitle: 'We take pride in every single print that leaves our workshop.',
     },
@@ -461,7 +461,7 @@ export const translations = {
     },
     // Why Choose Us
     whyUs: {
-      badge: 'ហេតុអ្វីជ្រើសរើស PrintCraft Studio?',
+      badge: 'ហេតុអ្វីជ្រើសរើស RS Printer?',
       title: 'បង្កើតឡើងសម្រាប់អាជីវកម្ម អ្នកច្នៃប្រឌិត និងបុគ្គលគ្រប់រូប',
       subtitle: 'យើងយកចិត្តទុកដាក់ខ្ពស់បំផុតលើគ្រប់ស្នាដៃបោះពុម្ពដែលចេញពីរោងពុម្ពរបស់យើង។',
     },

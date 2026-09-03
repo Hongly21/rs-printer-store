@@ -9,6 +9,7 @@ import { Footer } from '@/components/common/Footer';
 import { AddToCartToast } from '@/components/common/AddToCartToast';
 import { MobileBottomNav } from '@/components/common/MobileBottomNav';
 import { PwaInstallPrompt } from '@/components/common/PwaInstallPrompt';
+import { NavigationProgressBar } from '@/components/common/NavigationProgressBar';
 import { shopConfig } from '@/data/shop';
 
 export const viewport: Viewport = {
@@ -21,7 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://printcraftstudio.com'),
+  metadataBase: new URL('https://rsprinter.com'),
   title: {
     template: `%s | ${shopConfig.name}`,
     default: `${shopConfig.name} - ${shopConfig.tagline}`,
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'PrintCraft',
+    title: 'RS Printer',
   },
   openGraph: {
     title: `${shopConfig.name} - ${shopConfig.tagline}`,
@@ -72,6 +73,7 @@ export default function RootLayout({
   return (
     <html lang="km" className={kantumruy.variable}>
       <body className="flex flex-col min-h-screen bg-slate-50/50 text-slate-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
+        <NavigationProgressBar />
         <LanguageProvider>
           <CartProvider>
             <CheckoutProvider>

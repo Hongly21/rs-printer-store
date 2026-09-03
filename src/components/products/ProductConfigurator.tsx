@@ -102,7 +102,8 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
       config,
       priceResult.unitPrice,
       priceResult.totalPrice,
-      uploadedFile
+      uploadedFile,
+      product.nameKm
     );
 
     setTimeout(() => {

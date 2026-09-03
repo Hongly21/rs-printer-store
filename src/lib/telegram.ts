@@ -9,7 +9,7 @@ export function formatTelegramOrderMessage(order: Order): string {
       if (item.config.materialName) details.push(`   Material: ${item.config.materialName}`);
       if (item.config.sizeName) details.push(`   Size: ${item.config.sizeName}`);
       if (item.config.finishingName) details.push(`   Finishing: ${item.config.finishingName}`);
-      if (item.file) details.push(`   📎 Artwork: ${item.file.name}`);
+      if (item.file) details.push(`   Artwork: ${item.file.name}`);
       details.push(`   Quantity: ${item.config.quantity}`);
       details.push(`   Price: ${formatPrice(item.totalPrice)}`);
 
@@ -31,33 +31,33 @@ export function formatTelegramOrderMessage(order: Order): string {
     : 'Not provided';
 
   const notesSection = order.customer.notes
-    ? `\n\n📝 NOTES\n${order.customer.notes}`
+    ? `\n\n[NOTES]\n${order.customer.notes}`
     : '';
 
-  return `🔔 NEW ORDER
+  return `[RS PRINTER - NEW ORDER]
 
 Order: #${order.orderNumber}
 Date: ${new Date(order.createdAt).toLocaleString()}
 
-👤 CUSTOMER
+[CUSTOMER]
 Name: ${order.customer.fullName}
 Phone: ${order.customer.phone}
 Telegram: ${customerTelegram}
 
-📦 ITEMS
+[ITEMS]
 ${itemsText}
 
-🚚 DELIVERY
+[DELIVERY]
 ${deliveryText}
 
-💰 TOTAL
+[TOTAL]
 Subtotal: ${formatPrice(order.subtotal)}
 Delivery: ${formatPrice(order.deliveryFee)}
 TOTAL: ${formatPrice(order.total)}
 
-💳 PAYMENT
+[PAYMENT]
 Method: ${order.payment.methodName}
-Status: ⏳ ${order.payment.status.toUpperCase()}${notesSection}`;
+Status: ${order.payment.status.toUpperCase()}${notesSection}`;
 }
 
 export function generateTelegramShareLink(order: Order): string {

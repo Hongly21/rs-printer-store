@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { shopConfig } from '@/data/shop';
 import { categories } from '@/data/categories';
 import { useLanguage } from '@/context/LanguageContext';
-import { Phone, MessageSquare, Mail, MapPin, Clock, ShieldCheck, Truck, Sparkles } from 'lucide-react';
+import { Phone, MessageSquare, Mail, MapPin, Clock, ShieldCheck, Truck, Sparkles, Printer } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const { t, tObj } = useLanguage();
@@ -72,11 +72,11 @@ export const Footer: React.FC = () => {
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white font-black text-lg shadow-md">
-                P
+              <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md">
+                <Printer className="w-5 h-5" />
               </div>
               <span className="text-xl font-black text-white tracking-tight">
-                Print<span className="text-brand-400">Craft</span> Studio
+                RS <span className="text-brand-400">Printer</span>
               </span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">

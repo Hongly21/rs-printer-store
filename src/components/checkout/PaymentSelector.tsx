@@ -6,13 +6,15 @@ import { useRouter } from 'next/navigation';
 import { useCheckout } from '@/context/CheckoutContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { paymentMethods } from '@/data/payment-methods';
-import { QrCode, Store, CreditCard, CheckCircle2, ArrowRight, Clock } from 'lucide-react';
+import { QrCode, Store, CreditCard, CheckCircle2, ArrowRight, Clock, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/common/Badge';
+import { startNavigationLoading } from '@/components/common/NavigationProgressBar';
 
 export const PaymentSelector: React.FC = () => {
   const router = useRouter();
   const { payment, updatePaymentMethod } = useCheckout();
   const { t, tObj } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const selectedMethod = paymentMethods.find((p) => p.id === payment.methodId) || paymentMethods[0];
 
@@ -29,6 +31,8 @@ export const PaymentSelector: React.FC = () => {
 
   const handleContinue = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    startNavigationLoading();
     router.push('/checkout/review');
   };
 
@@ -171,18 +175,23 @@ export const PaymentSelector: React.FC = () => {
       <div className="flex items-center justify-between gap-4">
         <button
           type="button"
-          onClick={() => router.push('/checkout/delivery')}
-          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors"
+          onClick={() => {
+            startNavigationLoading();
+            router.push('/checkout/delivery');
+          }}
+          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
         >
           {t('checkout.backToDelivery')}
         </button>
 
         <button
           type="submit"
-          className="px-8 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-brand-600/25 transition-all flex items-center gap-2"
+          disabled={isSubmitting}
+          className="px-8 py-3.5 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-brand-600/25 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-75"
         >
+          {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
           <span>{t('checkout.continueToReview')}</span>
-          <ArrowRight className="w-4 h-4" />
+          {!isSubmitting && <ArrowRight className="w-4 h-4" />}
         </button>
       </div>
     </form>
