@@ -38,12 +38,12 @@ export const CustomerForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
         <div>
-          <h2 className="text-xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight">
             {t('checkout.customerTitle')}
           </h2>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             {t('checkout.customerSubtitle')}
           </p>
         </div>
@@ -51,7 +51,7 @@ export const CustomerForm: React.FC = () => {
         <div className="space-y-4">
           {/* Full Name */}
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center justify-between">
+            <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center justify-between">
               <span>{t('checkout.fullName')} <strong className="text-red-500">*</strong></span>
             </label>
             <div className="relative">
@@ -68,7 +68,7 @@ export const CustomerForm: React.FC = () => {
                 className={`w-full pl-10 pr-4 py-3 text-sm rounded-xl border transition-all focus:outline-none ${
                   touched.fullName && errors.fullName
                     ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-200'
-                    : 'border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20'
                 }`}
               />
             </div>
@@ -81,7 +81,7 @@ export const CustomerForm: React.FC = () => {
 
           {/* Phone Number */}
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center justify-between">
+            <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center justify-between">
               <span>{t('checkout.phone')} <strong className="text-red-500">*</strong></span>
             </label>
             <div className="relative">
@@ -98,7 +98,7 @@ export const CustomerForm: React.FC = () => {
                 className={`w-full pl-10 pr-4 py-3 text-sm rounded-xl border transition-all focus:outline-none ${
                   touched.phone && errors.phone
                     ? 'border-red-400 bg-red-50/30 focus:ring-2 focus:ring-red-200'
-                    : 'border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20'
+                    : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20'
                 }`}
               />
             </div>
@@ -112,10 +112,10 @@ export const CustomerForm: React.FC = () => {
           {/* Telegram Username */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
                 {t('checkout.telegramUser')}
               </label>
-              <span className="text-[11px] font-semibold text-slate-600">
+              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
                 {t('checkout.telegramOptional')}
               </span>
             </div>
@@ -128,7 +128,7 @@ export const CustomerForm: React.FC = () => {
                 value={customer.telegram || ''}
                 onChange={(e) => updateCustomerField('telegram', e.target.value)}
                 placeholder="e.g. @boun_hongly"
-                className="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 focus:outline-none transition-all"
+                className="w-full pl-10 pr-4 py-3 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 focus:outline-none transition-all"
               />
             </div>
             <p className="text-[11px] text-slate-500">
@@ -139,10 +139,10 @@ export const CustomerForm: React.FC = () => {
           {/* Additional Notes */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
                 {t('checkout.orderRemarks')}
               </label>
-              <span className="text-[11px] font-semibold text-slate-600">
+              <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
                 {t('checkout.remarksOptional')}
               </span>
             </div>
@@ -155,13 +155,13 @@ export const CustomerForm: React.FC = () => {
                 onChange={(e) => updateCustomerField('notes', e.target.value)}
                 rows={3}
                 placeholder={t('checkout.remarksPlaceholder')}
-                className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 focus:outline-none transition-all resize-none"
+                className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-500/20 focus:outline-none transition-all resize-none"
               />
             </div>
           </div>
         </div>
 
-        <div className="pt-2 flex items-center gap-2 text-xs text-slate-500">
+        <div className="pt-2 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
           <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>{t('checkout.privacyNotice')}</span>
         </div>
@@ -175,7 +175,7 @@ export const CustomerForm: React.FC = () => {
             startNavigationLoading();
             router.push('/cart');
           }}
-          className="px-6 py-3.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors cursor-pointer"
+          className="px-6 py-3.5 text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer"
         >
           {t('checkout.backToCart')}
         </button>

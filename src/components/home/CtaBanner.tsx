@@ -10,7 +10,7 @@ export const CtaBanner: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-slate-900 via-brand-950 to-slate-900 rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Subtle glow shapes */}

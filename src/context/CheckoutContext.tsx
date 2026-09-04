@@ -16,13 +16,15 @@ interface CheckoutContextType {
   setDelivery: React.Dispatch<React.SetStateAction<DeliveryInfo>>;
   updateDeliveryMethod: (method: 'pickup' | 'delivery') => void;
   updateDeliveryAddress: (address: string, city?: string, instructions?: string) => void;
+  updateDeliveryCarrier: (carrier: import('@/types').DeliveryCarrier) => void;
+  updateDeliveryInfo: (info: Partial<DeliveryInfo>) => void;
   
   payment: PaymentSelection;
   setPayment: React.Dispatch<React.SetStateAction<PaymentSelection>>;
   updatePaymentMethod: (methodId: string) => void;
   
   validateCustomerStep: () => { isValid: boolean; errors: Partial<Record<keyof CustomerInfo, string>> };
-  validateDeliveryStep: () => { isValid: boolean; errors: { address?: string } };
+  validateDeliveryStep: () => { isValid: boolean; errors: { address?: string; branch?: string } };
   
   currentOrder: Order | null;
   submitOrder: () => Order | null;
@@ -42,6 +44,12 @@ const defaultCustomer: CustomerInfo = {
 
 const defaultDelivery: DeliveryInfo = {
   method: 'pickup',
+  carrier: 'vireak_buntham',
+  vireakProvince: 'phnom_penh',
+  vireakBranch: 'pp_night_market',
+  vireakBranchName: 'សាខាកណ្តាល ផ្សាររាត្រី (ផ្លូវ ១០៦)',
+  vireakBranchNote: '',
+  recipientPhone: '',
   address: '',
   city: 'Phnom Penh',
   instructions: '',
@@ -120,6 +128,20 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }));
   };
 
+  const updateDeliveryCarrier = (carrier: import('@/types').DeliveryCarrier) => {
+    setDelivery((prev) => ({
+      ...prev,
+      carrier,
+    }));
+  };
+
+  const updateDeliveryInfo = (info: Partial<DeliveryInfo>) => {
+    setDelivery((prev) => ({
+      ...prev,
+      ...info,
+    }));
+  };
+
   const updatePaymentMethod = (methodId: string) => {
     setPayment((prev) => ({
       ...prev,
@@ -148,9 +170,22 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const validateDeliveryStep = () => {
-    const errors: { address?: string } = {};
-    if (delivery.method === 'delivery' && !delivery.address?.trim()) {
-      errors.address = 'Delivery address is required for door-to-door delivery.';
+    const errors: { address?: string; branch?: string } = {};
+    if (delivery.method === 'delivery') {
+      const carrier = delivery.carrier || 'vireak_buntham';
+      if (carrier === 'vireak_buntham') {
+        if (!delivery.vireakBranch && !delivery.vireakBranchName) {
+          errors.branch = 'Please select a Vireak Buntham campus/branch.';
+        }
+      } else if (carrier === 'phnom_penh_door') {
+        if (!delivery.address?.trim()) {
+          errors.address = 'Delivery address is required for Phnom Penh door delivery.';
+        }
+      } else if (carrier === 'other_courier') {
+        if (!delivery.otherCourierName?.trim()) {
+          errors.address = 'Courier name and destination station are required.';
+        }
+      }
     }
     return {
       isValid: Object.keys(errors).length === 0,
@@ -211,6 +246,8 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setDelivery,
         updateDeliveryMethod,
         updateDeliveryAddress,
+        updateDeliveryCarrier,
+        updateDeliveryInfo,
         payment,
         setPayment,
         updatePaymentMethod,

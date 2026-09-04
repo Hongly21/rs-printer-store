@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,6 +13,9 @@ const config: Config = {
         sans: ['var(--font-kantumruy)', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
+        slate: {
+          850: '#151f32',
+        },
         brand: {
           50: '#f0f7ff',
           100: '#e0effe',

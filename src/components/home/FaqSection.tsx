@@ -14,17 +14,17 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
+    <section className="py-16 sm:py-20 bg-white dark:bg-slate-950">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{t('faq.badge')}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             {t('faq.title')}
           </h2>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             {t('faq.subtitle')}
           </p>
         </div>
@@ -36,12 +36,12 @@ export const FaqSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="border border-slate-200/90 rounded-2xl overflow-hidden transition-all bg-white shadow-sm"
+                className="border border-slate-200/90 dark:border-slate-800 rounded-2xl overflow-hidden transition-all bg-white dark:bg-slate-900 shadow-sm"
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-slate-900 hover:text-brand-600 transition-colors"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-slate-900 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                 >
                   <span className="text-sm sm:text-base">
                     {tObj(faq.question, faq.questionKm)}
@@ -54,7 +54,7 @@ export const FaqSection: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3 animate-in fade-in">
+                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-3 animate-in fade-in">
                     {tObj(faq.answer, faq.answerKm)}
                   </div>
                 )}

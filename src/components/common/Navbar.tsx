@@ -8,6 +8,7 @@ import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { shopConfig } from '@/data/shop';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { ThemeToggle } from './ThemeToggle';
 
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
@@ -82,8 +83,8 @@ export const Navbar: React.FC = () => {
       <header
         className={`sticky top-0 z-40 transition-all duration-200 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-            : 'bg-white border-b border-slate-100 py-4'
+            ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-slate-800 py-3'
+            : 'bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -93,10 +94,10 @@ export const Navbar: React.FC = () => {
               <Printer className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xl font-black text-slate-900 tracking-tight flex items-center">
-                RS<span className="text-brand-600 ml-1.5">Printer</span>
+              <span className="text-xl font-black text-slate-900 dark:text-white tracking-tight flex items-center">
+                RS<span className="text-brand-600 dark:text-brand-400 ml-1.5">Printer</span>
               </span>
-              <span className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider -mt-1">
+              <span className="block text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider -mt-1">
                 {tObj('STUDIO & PRINT SHOP', 'រោងពុម្ព & ស្ទូឌីយោ')}
               </span>
             </div>
@@ -110,33 +111,34 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`text-sm font-bold transition-colors relative py-1 ${
                   isActive(link.href)
-                    ? 'text-brand-600'
-                    : 'text-slate-600 hover:text-slate-900'
+                    ? 'text-brand-600 dark:text-brand-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {link.name}
                 {isActive(link.href) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-600 rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-600 dark:bg-brand-400 rounded-full" />
                 )}
               </Link>
             ))}
           </nav>
 
-          {/* Right actions: Language switcher, Cart button, CTA */}
-          <div className="flex items-center gap-3">
-            {/* Language Switcher */}
-            <LanguageSwitcher />
+          {/* Right actions: Theme toggle, Language switcher, Cart button, CTA */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Theme Toggle (Instant 1-click Sun/Moon) */}
+            <ThemeToggle />
+
+            {/* Language Switcher (Desktop - mobile has it in bottom nav and menu drawer) */}
+            <LanguageSwitcher className="hidden sm:inline-flex" />
 
             {/* Cart Link with Badge */}
             <Link
               href="/cart"
               aria-label="View shopping cart"
-              className="relative p-2.5 rounded-xl text-slate-700 hover:text-brand-600 hover:bg-brand-50 border border-slate-200/80 transition-all flex items-center gap-2 group"
+              className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700 transition-all flex items-center gap-2 group"
             >
-              <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform text-slate-800" />
-              <span className="hidden sm:inline text-xs font-bold text-slate-700">
-                {t('nav.cart')}
-              </span>
+              <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform text-slate-800 dark:text-slate-200" />
+          
               {isHydrated && cartCount > 0 && (
                 <span className="bg-brand-600 text-white font-extrabold text-xs px-2 py-0.5 rounded-full shadow-sm animate-in zoom-in">
                   {cartCount}
@@ -157,7 +159,7 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              className="md:hidden p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 border border-slate-200"
+              className="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -166,7 +168,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3 animate-in slide-in-from-top-4 duration-200">
+          <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 space-y-3 animate-in slide-in-from-top-4 duration-200">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
@@ -174,8 +176,8 @@ export const Navbar: React.FC = () => {
                   href={link.href}
                   className={`px-3 py-2.5 rounded-xl text-sm font-bold transition-colors ${
                     isActive(link.href)
-                      ? 'bg-brand-50 text-brand-600'
-                      : 'text-slate-700 hover:bg-slate-50'
+                      ? 'bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400'
+                      : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60'
                   }`}
                 >
                   {link.name}
@@ -183,26 +185,34 @@ export const Navbar: React.FC = () => {
               ))}
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+            {/* Quick settings row in mobile drawer */}
+            <div className="flex items-center justify-between py-2 px-1 border-t border-slate-100 dark:border-slate-800">
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                {tObj('Appearance & Theme', 'ទម្រង់ផ្ទៃ & ពណ៌')}
+              </span>
+              <ThemeToggle showLabel />
+            </div>
+
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
               <Link
                 href="/products"
-                className="w-full text-center py-3 bg-brand-600 text-white font-bold text-sm rounded-xl shadow-sm"
+                className="w-full text-center py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl shadow-sm"
               >
                 {t('nav.browseAll')}
               </Link>
-              <div className="flex items-center justify-around pt-2 text-xs text-slate-500">
+              <div className="flex items-center justify-around pt-2 text-xs text-slate-500 dark:text-slate-400">
                 <a
                   href={`tel:${shopConfig.phone}`}
-                  className="flex items-center gap-1 hover:text-slate-900 font-semibold"
+                  className="flex items-center gap-1 hover:text-slate-900 dark:hover:text-white font-semibold"
                 >
-                  <Phone className="w-3.5 h-3.5 text-brand-600" />
+                  <Phone className="w-3.5 h-3.5 text-brand-600 dark:text-brand-400" />
                   <span>{shopConfig.displayPhone}</span>
                 </a>
                 <a
                   href={`https://t.me/${shopConfig.telegramBotOrUser.replace(/^@/, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sky-600 hover:text-sky-700 font-semibold"
+                  className="flex items-center gap-1 text-sky-600 dark:text-sky-400 hover:text-sky-500 font-semibold"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>{t('nav.telegram')}</span>

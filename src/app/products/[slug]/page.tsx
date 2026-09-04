@@ -45,8 +45,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
   if (!product) {
     return (
       <div className="py-24 px-4 max-w-md mx-auto text-center space-y-4">
-        <h2 className="text-2xl font-black text-slate-900">Product not found.</h2>
-        <p className="text-sm text-slate-500">
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Product not found.</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400">
           The printing product you are looking for might have been moved or removed.
         </p>
         <Link
@@ -61,19 +61,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="py-8 sm:py-12 bg-white min-h-screen">
+    <div className="py-8 sm:py-12 pb-36 lg:pb-16 bg-white dark:bg-slate-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500">
-          <Link href="/" className="hover:text-slate-900 transition-colors">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+          <Link href="/" className="hover:text-slate-900 dark:hover:text-white transition-colors">
             Home
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <Link href="/products" className="hover:text-slate-900 transition-colors">
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600" />
+          <Link href="/products" className="hover:text-slate-900 dark:hover:text-white transition-colors">
             Products
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="font-bold text-slate-900 truncate">
+          <ChevronRight className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600" />
+          <span className="font-bold text-slate-900 dark:text-white truncate">
             {product.name}
           </span>
         </nav>

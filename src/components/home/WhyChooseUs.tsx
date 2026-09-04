@@ -53,16 +53,16 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200/70">
+    <section className="py-16 sm:py-20 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200/70 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs font-bold text-brand-600 uppercase tracking-widest block">
             {t('whyUs.badge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
             {t('whyUs.title')}
           </h2>
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             {t('whyUs.subtitle')}
           </p>
         </div>
@@ -73,15 +73,15 @@ export const WhyChooseUs: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow space-y-3"
+                className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow space-y-3"
               >
-                <div className="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-brand-50 dark:bg-brand-950/60 border border-brand-100 dark:border-brand-900/60 text-brand-600 dark:text-brand-400 flex items-center justify-center">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-extrabold text-slate-900 text-base">
+                <h3 className="font-extrabold text-slate-900 dark:text-white text-base">
                   {tObj(feat.title, feat.titleKm)}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                   {tObj(feat.description, feat.descriptionKm)}
                 </p>
               </div>

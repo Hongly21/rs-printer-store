@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { kantumruy } from '@/lib/font';
+import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { CartProvider } from '@/context/CartContext';
 import { CheckoutProvider } from '@/context/CheckoutContext';
@@ -71,21 +72,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="km" className={kantumruy.variable}>
-      <body className="flex flex-col min-h-screen bg-slate-50/50 text-slate-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
+    <html lang="km" className={kantumruy.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const stored = localStorage.getItem('rs_printer_theme_v1');
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (stored === 'dark' || (!stored && prefersDark) || (stored === 'system' && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.style.colorScheme = 'dark';
+                } else {
+                  document.documentElement.classList.remove('dark');
+                  document.documentElement.style.colorScheme = 'light';
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
+      <body className="flex flex-col min-h-screen bg-slate-50/50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white transition-colors duration-200">
         <NavigationProgressBar />
-        <LanguageProvider>
-          <CartProvider>
-            <CheckoutProvider>
-              <Navbar />
-              <main className="flex-1 pb-20 md:pb-0">{children}</main>
-              <Footer />
-              <AddToCartToast />
-              <MobileBottomNav />
-              <PwaInstallPrompt />
-            </CheckoutProvider>
-          </CartProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <CartProvider>
+              <CheckoutProvider>
+                <Navbar />
+                <main className="flex-1 pb-20 md:pb-0">{children}</main>
+                <Footer />
+                <AddToCartToast />
+                <MobileBottomNav />
+                <PwaInstallPrompt />
+              </CheckoutProvider>
+            </CartProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

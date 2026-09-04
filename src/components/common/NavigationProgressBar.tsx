@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -121,8 +121,8 @@ function NavigationProgressBarInner() {
       </div>
       {showSpinner && (
         <div className="fixed top-3 right-3 sm:top-4 sm:right-4 z-[99999] pointer-events-none animate-in fade-in zoom-in duration-150">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 flex items-center justify-center p-1.5 ring-1 ring-black/5">
-            <div className="w-full h-full rounded-full border-2 border-brand-200 border-t-brand-600 animate-spin" />
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg border border-slate-200/80 dark:border-slate-800 flex items-center justify-center p-1.5 ring-1 ring-black/5 dark:ring-white/10">
+            <div className="w-full h-full rounded-full border-2 border-brand-200 dark:border-brand-900 border-t-brand-600 animate-spin" />
           </div>
         </div>
       )}

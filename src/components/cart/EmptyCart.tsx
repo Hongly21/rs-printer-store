@@ -10,15 +10,15 @@ export const EmptyCart: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto py-16 px-4 text-center space-y-6">
-      <div className="w-20 h-20 rounded-3xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center mx-auto shadow-sm">
+      <div className="w-20 h-20 rounded-3xl bg-brand-50 dark:bg-brand-950/60 border border-brand-100 dark:border-brand-900/60 text-brand-600 dark:text-brand-400 flex items-center justify-center mx-auto shadow-sm">
         <ShoppingBag className="w-10 h-10" />
       </div>
 
       <div className="space-y-2">
-        <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
           {t('cart.emptyTitle')}
         </h2>
-        <p className="text-sm text-slate-500 max-w-xs mx-auto">
+        <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
           {t('cart.emptyDesc')}
         </p>
       </div>

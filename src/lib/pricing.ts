@@ -22,10 +22,11 @@ export function calculateProductPrice(
   product: Product,
   config: SelectedProductConfig
 ): PriceCalculationResult {
-  const { materialId, sizeId, customWidth, customHeight, finishingId, quantity } = config;
+  const { materialId, sizeId, customWidth, customHeight, finishingId } = config;
+  const safeQuantity = Math.max(1, Math.round(config.quantity || 1));
 
-  // 1. Size base price
-  let baseSizePrice = product.startingPrice;
+  // 1. Size base price: use first size price if sizes exist, otherwise fallback to startingPrice
+  let baseSizePrice = product.options.sizes?.[0]?.price ?? product.startingPrice;
   if (sizeId && product.options.sizes) {
     const selectedSize = product.options.sizes.find((s) => s.id === sizeId);
     if (selectedSize) {
@@ -33,8 +34,8 @@ export function calculateProductPrice(
     }
   } else if (customWidth && customHeight) {
     // Square meter or cm area calculation
-    const areaSqCm = customWidth * customHeight;
-    baseSizePrice = Math.max(0.1, (areaSqCm / 100) * 0.05);
+    const areaSqCm = Math.max(1, customWidth * customHeight);
+    baseSizePrice = Math.max(0.1, Number(((areaSqCm / 100) * 0.05).toFixed(3)));
   }
 
   // 2. Material add-on and multiplier
@@ -59,24 +60,27 @@ export function calculateProductPrice(
 
   // 4. Calculate unit price & components
   const rawUnitPrice = Math.max(0.01, baseSizePrice * materialMultiplier);
-  const baseTotal = Number((baseSizePrice * quantity).toFixed(2));
-  const materialTotal = Number((((rawUnitPrice - baseSizePrice) * quantity) + materialAddon).toFixed(2));
-  const rawSubtotal = Number((baseTotal + materialTotal + finishingAddon).toFixed(2));
+  const baseTotal = Number((baseSizePrice * safeQuantity).toFixed(2));
+  const materialTotal = Number(
+    (((rawUnitPrice - baseSizePrice) * safeQuantity) + materialAddon).toFixed(2)
+  );
+  const safeFinishingAddon = Number(finishingAddon.toFixed(2));
+  const rawSubtotal = Number((baseTotal + materialTotal + safeFinishingAddon).toFixed(2));
   
   // 5. Volume discount calculation
   let discountPercentage = 0;
-  if (quantity >= 1000) {
+  if (safeQuantity >= 1000) {
     discountPercentage = 15;
-  } else if (quantity >= 500) {
+  } else if (safeQuantity >= 500) {
     discountPercentage = 10;
-  } else if (quantity >= 200) {
+  } else if (safeQuantity >= 200) {
     discountPercentage = 5;
   }
 
   const discountAmount = Number(((rawSubtotal * discountPercentage) / 100).toFixed(2));
   const totalPrice = Math.max(0.1, Number((rawSubtotal - discountAmount).toFixed(2)));
-  const finalUnitPrice = Number((totalPrice / quantity).toFixed(3));
-  const baseUnitCost = (baseSizePrice * materialMultiplier) + (materialAddon / Math.max(1, quantity)) + (finishingAddon / Math.max(1, quantity));
+  const finalUnitPrice = Number((totalPrice / safeQuantity).toFixed(3));
+  const baseUnitCost = Number((rawSubtotal / safeQuantity).toFixed(3));
 
   return {
     unitPrice: finalUnitPrice,
@@ -90,7 +94,7 @@ export function calculateProductPrice(
       materialAddon,
       materialMultiplier,
       materialTotal,
-      finishingAddon,
+      finishingAddon: safeFinishingAddon,
       baseUnitCost,
     },
   };

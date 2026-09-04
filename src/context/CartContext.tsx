@@ -2,7 +2,8 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { CartItem, SelectedProductConfig, UploadedFile, DeliveryMethod } from '@/types';
-import { calculateCartTotals, CartTotals } from '@/lib/pricing';
+import { calculateCartTotals, calculateProductPrice, CartTotals } from '@/lib/pricing';
+import { products } from '@/data/products';
 
 interface CartContextType {
   items: CartItem[];
@@ -106,6 +107,24 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setItems((prev) =>
       prev.map((item) => {
         if (item.id === id) {
+          const product = products.find(
+            (p) => p.id === item.productId || p.slug === item.productSlug
+          );
+
+          if (product) {
+            const updatedConfig: SelectedProductConfig = {
+              ...item.config,
+              quantity: newQuantity,
+            };
+            const calculation = calculateProductPrice(product, updatedConfig);
+            return {
+              ...item,
+              config: updatedConfig,
+              unitPrice: calculation.unitPrice,
+              totalPrice: calculation.totalPrice,
+            };
+          }
+
           const unitPrice = item.unitPrice;
           const totalPrice = Number((unitPrice * newQuantity).toFixed(2));
           return {
@@ -139,7 +158,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return calculateCartTotals(items, deliveryMethod);
   };
 
-  const cartCount = items.reduce((sum, item) => sum + (item.config?.quantity || 1), 0);
+  const cartCount = items.length;
 
   const closeToast = () => setShowToast(false);
 

@@ -55,7 +55,7 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 quantity === preset
                   ? 'bg-brand-600 text-white shadow-sm ring-2 ring-brand-500/30'
-                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                  : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300'
               }`}
             >
               {preset.toLocaleString()} {t('configurator.pcs')}
@@ -66,13 +66,13 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
 
       {/* Stepper + Input */}
       <div className="flex items-center gap-3">
-        <div className="inline-flex items-center rounded-xl border border-slate-200 bg-white p-1 shadow-sm">
+        <div className="inline-flex items-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-1 shadow-sm">
           <button
             type="button"
             onClick={handleDecrement}
             disabled={quantity <= minQuantity}
             aria-label="Decrease quantity"
-            className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors"
           >
             <Minus className="w-4 h-4" />
           </button>
@@ -84,7 +84,7 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
             value={quantity}
             onChange={handleInputChange}
             aria-label="Print quantity"
-            className="w-20 text-center font-black text-slate-900 text-base focus:outline-none bg-transparent"
+            className="w-20 text-center font-black text-slate-900 dark:text-white text-base focus:outline-none bg-transparent"
           />
 
           <button
@@ -92,13 +92,13 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({
             onClick={handleIncrement}
             disabled={quantity >= maxQuantity}
             aria-label="Increase quantity"
-            className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors"
           >
             <Plus className="w-4 h-4" />
           </button>
         </div>
 
-        <span className="text-xs text-slate-500 font-medium">
+        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
           {t('configurator.minOrder')} {minQuantity} {t('configurator.pcs')}
         </span>
       </div>

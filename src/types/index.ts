@@ -75,6 +75,7 @@ export interface Category {
 }
 
 export interface UploadedFile {
+  fileId?: string;
   name: string;
   size: number;
   type: string;
@@ -97,6 +98,11 @@ export interface SelectedProductConfig {
   finishingNameKm?: string;
   quantity: number;
   notes?: string;
+  designMode?: 'preset' | 'custom';
+  presetId?: string;
+  presetName?: string;
+  presetNameKm?: string;
+  isCustomized?: boolean;
 }
 
 export interface CartItem {
@@ -114,6 +120,7 @@ export interface CartItem {
 }
 
 export type DeliveryMethod = 'pickup' | 'delivery';
+export type DeliveryCarrier = 'vireak_buntham' | 'phnom_penh_door' | 'other_courier';
 
 export interface CustomerInfo {
   fullName: string;
@@ -124,6 +131,13 @@ export interface CustomerInfo {
 
 export interface DeliveryInfo {
   method: DeliveryMethod;
+  carrier?: DeliveryCarrier;
+  vireakProvince?: string;
+  vireakBranch?: string;
+  vireakBranchName?: string;
+  vireakBranchNote?: string;
+  recipientPhone?: string;
+  otherCourierName?: string;
   address?: string;
   city?: string;
   instructions?: string;

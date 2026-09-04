@@ -20,20 +20,20 @@ export const StickyMobileCart: React.FC = () => {
   const totals = getTotals();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-30 p-3 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-2xl md:hidden animate-in slide-in-from-bottom duration-300">
+    <div className="fixed bottom-[calc(3.5rem+env(safe-area-inset-bottom))] left-0 right-0 z-30 p-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/90 dark:border-slate-800 shadow-2xl md:hidden animate-in slide-in-from-bottom duration-300">
       <div className="max-w-md mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 text-brand-600 flex items-center justify-center relative">
+          <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-950/60 border border-brand-100 dark:border-brand-900/60 text-brand-600 dark:text-brand-400 flex items-center justify-center relative">
             <ShoppingBag className="w-5 h-5" />
             <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-brand-600 text-white rounded-full text-[10px] font-extrabold flex items-center justify-center">
               {cartCount}
             </span>
           </div>
           <div>
-            <span className="block text-[11px] font-semibold text-slate-500">
+            <span className="block text-[11px] font-semibold text-slate-500 dark:text-slate-400">
               {cartCount} {t('cart.itemsCount')}
             </span>
-            <span className="text-base font-black text-slate-900 leading-none">
+            <span className="text-base font-black text-slate-900 dark:text-white leading-none">
               {formatPrice(totals.subtotal)}
             </span>
           </div>

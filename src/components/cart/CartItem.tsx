@@ -7,7 +7,7 @@ import { CartItem as CartItemType } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { formatPrice, formatFileSize } from '@/lib/utils';
-import { Trash2, Edit3, Paperclip, Minus, Plus } from 'lucide-react';
+import { Trash2, Edit3, Paperclip, Minus, Plus, Sparkles, Zap } from 'lucide-react';
 
 interface CartItemProps {
   item: CartItemType;
@@ -30,16 +30,27 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
   const finishingDisplay = tObj(item.config.finishingName, item.config.finishingNameKm);
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 p-5 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-        {/* Product Thumbnail */}
-        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-50 border border-slate-100 p-2 relative shrink-0 flex items-center justify-center">
-          <Image
-            src={item.productImage}
-            alt={tObj(item.productName, item.productNameKm)}
-            fill
-            className="object-contain p-1"
-          />
+        {/* Product Thumbnail / Artwork Preview */}
+        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-100 dark:border-slate-800 p-2 relative shrink-0 flex items-center justify-center overflow-hidden">
+          {item.file?.previewUrl ? (
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={item.file.previewUrl}
+                alt={item.file.name}
+                className="w-full h-full object-contain filter drop-shadow-sm"
+              />
+            </div>
+          ) : (
+            <Image
+              src={item.productImage}
+              alt={tObj(item.productName, item.productNameKm)}
+              fill
+              className="object-contain p-1"
+            />
+          )}
         </div>
 
         {/* Item Configuration Details */}
@@ -48,85 +59,105 @@ export const CartItem: React.FC<CartItemProps> = ({ item }) => {
             <div>
               <Link
                 href={`/products/${item.productSlug}`}
-                className="font-bold text-slate-900 text-base hover:text-brand-600 transition-colors inline-block"
+                className="font-bold text-slate-900 dark:text-white text-base hover:text-brand-600 dark:hover:text-brand-400 transition-colors inline-block"
               >
                 {tObj(item.productName, item.productNameKm)}
               </Link>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 mt-0.5 font-medium">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">
                 {materialDisplay && (
-                  <span>{tObj('Material:', 'សម្ភារៈ៖')} <strong className="text-slate-700">{materialDisplay}</strong></span>
+                  <span>{tObj('Material:', 'សម្ភារៈ៖')} <strong className="text-slate-700 dark:text-slate-200">{materialDisplay}</strong></span>
                 )}
                 {sizeDisplay && (
-                  <span>{tObj('Size:', 'ទំហំ៖')} <strong className="text-slate-700">{sizeDisplay}</strong></span>
+                  <span>{tObj('Size:', 'ទំហំ៖')} <strong className="text-slate-700 dark:text-slate-200">{sizeDisplay}</strong></span>
                 )}
                 {finishingDisplay && (
-                  <span>{tObj('Finishing:', 'ការកាត់/ស្រោប៖')} <strong className="text-slate-700">{finishingDisplay}</strong></span>
+                  <span>{tObj('Finishing:', 'ការកាត់/ស្រោប៖')} <strong className="text-slate-700 dark:text-slate-200">{finishingDisplay}</strong></span>
                 )}
               </div>
             </div>
 
             {/* Total Price */}
             <div className="text-right shrink-0">
-              <span className="text-lg font-black text-slate-900 block">
+              <span className="text-lg font-black text-slate-900 dark:text-white block">
                 {formatPrice(item.totalPrice)}
               </span>
-              <span className="text-[11px] text-slate-500 font-medium">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                 {formatPrice(item.unitPrice)} / {t('configurator.perPiece')}
               </span>
             </div>
           </div>
 
-          {/* Attached Design File Info */}
+          {/* Attached Design File Info & Mode Badge */}
           {item.file && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold">
-              <Paperclip className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-              <span className="truncate max-w-[200px] sm:max-w-xs">{item.file.name}</span>
-              <span className="text-[10px] text-emerald-600 font-normal">
-                ({formatFileSize(item.file.size)})
-              </span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200/80 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs font-semibold">
+                {item.config.designMode === 'preset' ? (
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                ) : (
+                  <Paperclip className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                )}
+                <span className="truncate max-w-[200px] sm:max-w-xs">{item.file.name}</span>
+                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-normal">
+                  ({formatFileSize(item.file.size)})
+                </span>
+              </div>
+
+              {item.config.designMode === 'preset' && (
+                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-brand-100 dark:bg-brand-900/60 text-brand-700 dark:text-brand-300 flex items-center gap-1">
+                  <Zap className="w-2.5 h-2.5 text-brand-600 dark:text-brand-300 shrink-0" />
+                  <span>{tObj('Ready Sticker', 'ស្ទីគ័រមានស្រាប់')}</span>
+                </span>
+              )}
+
+              {item.config.isCustomized && (
+                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 flex items-center gap-1">
+                  <Sparkles className="w-2.5 h-2.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                  <span>{tObj('Studio Customized', 'បានកែសម្រួល')}</span>
+                </span>
+              )}
             </div>
           )}
 
           {/* Special notes */}
           {item.config.notes && (
-            <p className="text-xs text-slate-500 italic bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
+            <p className="text-xs text-slate-500 dark:text-slate-400 italic bg-slate-50 dark:bg-slate-800/60 px-3 py-1.5 rounded-xl border border-slate-100 dark:border-slate-800">
               {tObj('Note:', 'ចំណាំ៖')} &quot;{item.config.notes}&quot;
             </p>
           )}
 
           {/* Bottom actions: Quantity stepper + Edit + Remove */}
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100">
+          <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
             {/* Quantity Stepper */}
             <div className="flex items-center gap-2">
-              <div className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50 p-0.5 text-xs">
+              <div className="inline-flex items-center rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-0.5 text-xs">
                 <button
                   type="button"
                   onClick={handleDecrement}
                   disabled={item.config.quantity <= 1}
                   aria-label="Decrease item quantity"
-                  className="w-7 h-7 flex items-center justify-center rounded text-slate-600 hover:text-slate-900 hover:bg-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+                  className="w-7 h-7 flex items-center justify-center rounded text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:pointer-events-none transition-colors"
                 >
                   <Minus className="w-3 h-3" />
                 </button>
-                <span className="px-3 font-bold text-slate-800 min-w-[3rem] text-center">
+                <span className="px-3 font-bold text-slate-800 dark:text-slate-100 min-w-[3rem] text-center">
                   {item.config.quantity}
                 </span>
                 <button
                   type="button"
                   onClick={handleIncrement}
                   aria-label="Increase item quantity"
-                  className="w-7 h-7 flex items-center justify-center rounded text-slate-600 hover:text-slate-900 hover:bg-white transition-colors"
+                  className="w-7 h-7 flex items-center justify-center rounded text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-700 transition-colors"
                 >
                   <Plus className="w-3 h-3" />
                 </button>
               </div>
-              <span className="text-xs text-slate-500">{t('configurator.pcs')}</span>
+              <span className="text-xs text-slate-500 dark:text-slate-400">{t('configurator.pcs')}</span>
             </div>
 
             <div className="flex items-center gap-3">
               <Link
                 href={`/products/${item.productSlug}`}
-                className="text-xs font-semibold text-slate-600 hover:text-brand-600 flex items-center gap-1 transition-colors"
+                className="text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1 transition-colors"
               >
                 <Edit3 className="w-3.5 h-3.5" />
                 <span>{t('cart.edit')}</span>

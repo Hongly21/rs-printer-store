@@ -52,28 +52,28 @@ export const AddToCartToast: React.FC = () => {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 sm:p-4 relative overflow-hidden ring-1 ring-black/5">
+      <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 dark:border-slate-800 p-3.5 sm:p-4 relative overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
         {/* Top accent bar */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-500 via-emerald-500 to-teal-400" />
 
         {/* Header: Status & Close */}
         <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs sm:text-sm">
+          <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-xs sm:text-sm">
             <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
             <span className="leading-none">{t('configurator.addedToCart')}</span>
           </div>
           <button
             onClick={closeToast}
             aria-label="Close notification"
-            className="text-slate-400 hover:text-slate-700 active:text-slate-900 p-1.5 rounded-lg hover:bg-slate-100 active:bg-slate-200 transition-colors cursor-pointer shrink-0"
+            className="text-slate-400 hover:text-slate-700 dark:hover:text-white active:text-slate-900 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Product Details Row */}
-        <div className="mt-2.5 sm:mt-3 flex items-center gap-3 bg-slate-50/90 p-2.5 rounded-xl border border-slate-100">
-          <div className="w-12 h-12 sm:w-14 sm:h-14 relative rounded-lg overflow-hidden bg-white border border-slate-200/60 shrink-0 flex items-center justify-center shadow-xs">
+        <div className="mt-2.5 sm:mt-3 flex items-center gap-3 bg-slate-50/90 dark:bg-slate-800/80 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 relative rounded-lg overflow-hidden bg-white dark:bg-slate-700 border border-slate-200/60 dark:border-slate-600 shrink-0 flex items-center justify-center shadow-xs">
             <Image
               src={lastAddedItem.productImage}
               alt={productName}
@@ -82,15 +82,15 @@ export const AddToCartToast: React.FC = () => {
             />
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="font-bold text-slate-800 text-xs sm:text-sm truncate">
+            <h4 className="font-bold text-slate-800 dark:text-white text-xs sm:text-sm truncate">
               {productName}
             </h4>
-            <p className="text-[11px] sm:text-xs text-slate-500 truncate mt-0.5">
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">
               <span>Qty: {lastAddedItem.config.quantity} {t('configurator.pcs')}</span>
               {sizeDisplay ? <span> • {sizeDisplay}</span> : null}
               {materialDisplay ? <span> • {materialDisplay}</span> : null}
             </p>
-            <p className="text-xs sm:text-sm font-extrabold text-brand-600 mt-0.5">
+            <p className="text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 mt-0.5">
               {formatPrice(lastAddedItem.totalPrice)}
             </p>
           </div>
@@ -100,7 +100,7 @@ export const AddToCartToast: React.FC = () => {
         <div className="mt-3 grid grid-cols-2 gap-2">
           <button
             onClick={closeToast}
-            className="w-full min-h-[40px] px-2 sm:px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 active:bg-slate-300 rounded-xl transition-all text-center flex items-center justify-center cursor-pointer active:scale-[0.98]"
+            className="w-full min-h-[40px] px-2 sm:px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 active:bg-slate-300 dark:active:bg-slate-600 rounded-xl transition-all text-center flex items-center justify-center cursor-pointer active:scale-[0.98]"
           >
             <span className="truncate">{t('configurator.continueShopping')}</span>
           </button>

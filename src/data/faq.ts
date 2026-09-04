@@ -31,8 +31,8 @@ export const printingFaqs: FaqItem[] = [
   {
     question: 'How does payment work for online orders?',
     questionKm: 'តើការទូទាត់ប្រាក់សម្រាប់ការកុម្ម៉ង់អនឡាញដំណើរការដូចម្តេច?',
-    answer: 'You can pay instantly using KHQR (Bakong, ABA, Wing, ACLEDA), direct bank transfer, or choose Pay on Pickup / Cash on Delivery. When you submit your order, your status is recorded as PENDING until verified by our staff.',
-    answerKm: 'អ្នកអាចទូទាត់ភ្លាមៗតាមរយៈ KHQR (Bakong, ABA, Wing, ACLEDA), ផ្ទេរតាមធនាគារផ្ទាល់ ឬជ្រើសរើសទូទាត់ពេលមកយកទំនិញ/ពេលដឹកជញ្ជូនដល់។ ពេលបញ្ជូនការកុម្ម៉ង់ ស្ថានភាពនឹងបង្ហាញជា "PENDING" រហូតដល់បុគ្គលិកយើងផ្ទៀងផ្ទាត់។',
+    answer: 'You can pay instantly using KHQR (Bakong, ABA, Wing, ACLEDA), or choose Pay on Shop Pickup / Cash on Delivery. When you submit your order, your status is recorded as PENDING until verified by our staff.',
+    answerKm: 'អ្នកអាចទូទាត់ភ្លាមៗតាមរយៈ KHQR (Bakong, ABA, Wing, ACLEDA) ឬជ្រើសរើសទូទាត់ពេលមកយកទំនិញនៅហាង/ពេលដឹកជញ្ជូនដល់។ ពេលបញ្ជូនការកុម្ម៉ង់ ស្ថានភាពនឹងបង្ហាញជា "PENDING" រហូតដល់បុគ្គលិកយើងផ្ទៀងផ្ទាត់។',
     category: 'Payment',
   },
   {

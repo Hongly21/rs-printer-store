@@ -34,7 +34,7 @@ export const CheckoutSteps: React.FC = () => {
         {/* Desktop / Tablet steps line */}
         <div className="hidden sm:flex items-center justify-between relative">
           {/* Background Connecting Line */}
-          <div className="absolute top-1/2 left-6 right-6 -translate-y-1/2 h-1 bg-slate-100 z-0" />
+          <div className="absolute top-1/2 left-6 right-6 -translate-y-1/2 h-1 bg-slate-100 dark:bg-slate-800 z-0" />
           <div
             className="absolute top-1/2 left-6 -translate-y-1/2 h-1 bg-brand-600 z-0 transition-all duration-300"
             style={{ width: `${(currentIdx / (steps.length - 1)) * 100}%` }}
@@ -51,10 +51,10 @@ export const CheckoutSteps: React.FC = () => {
                   href={isCompleted ? step.href : '#'}
                   className={`w-11 h-11 rounded-2xl flex items-center justify-center font-bold text-sm transition-all duration-200 ${
                     isCompleted
-                      ? 'bg-brand-600 text-white ring-4 ring-brand-100 cursor-pointer shadow-md'
+                      ? 'bg-brand-600 text-white ring-4 ring-brand-100 dark:ring-brand-950 cursor-pointer shadow-md'
                       : isCurrent
-                      ? 'bg-brand-600 text-white ring-4 ring-brand-200 shadow-md scale-105'
-                      : 'bg-white text-slate-400 border-2 border-slate-200 pointer-events-none'
+                      ? 'bg-brand-600 text-white ring-4 ring-brand-200 dark:ring-brand-900 shadow-md scale-105'
+                      : 'bg-white dark:bg-slate-900 text-slate-400 dark:text-slate-500 border-2 border-slate-200 dark:border-slate-800 pointer-events-none'
                   }`}
                 >
                   {isCompleted ? (
@@ -68,8 +68,8 @@ export const CheckoutSteps: React.FC = () => {
                     isCurrent
                       ? 'text-brand-600'
                       : isCompleted
-                      ? 'text-slate-800'
-                      : 'text-slate-400'
+                      ? 'text-slate-800 dark:text-slate-200'
+                      : 'text-slate-400 dark:text-slate-500'
                   }`}
                 >
                   {step.name}
@@ -89,7 +89,7 @@ export const CheckoutSteps: React.FC = () => {
               {Math.round(((currentIdx + 1) / steps.length) * 100)}%
             </span>
           </div>
-          <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+          <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
             <div
               className="bg-brand-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${((currentIdx + 1) / steps.length) * 100}%` }}
