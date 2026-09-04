@@ -1030,11 +1030,11 @@ export const ImageEditorModal: React.FC<ImageEditorModalProps> = ({
             {/* Real-World Mockup Switcher Bar */}
             <div className="flex items-center gap-1 p-1 bg-white/95 dark:bg-slate-900/95 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm mb-3">
               {[
-                { id: 'sticker', icon: Layers },
-                { id: 'cup', icon: Coffee },
-                { id: 'laptop', icon: Laptop },
-                { id: 'phone',icon: Smartphone },
-                { id: 'box',  icon: Package },
+                { id: 'sticker', label: 'Sticker', labelKm: 'ស្ទីគ័រ', icon: Layers },
+                { id: 'cup', label: 'Coffee Cup', labelKm: 'កែវកាហ្វេ', icon: Coffee },
+                { id: 'laptop', label: 'Laptop Lid', labelKm: 'គម្របកុំព្យូទ័រ', icon: Laptop },
+                { id: 'phone', label: 'Phone Case', labelKm: 'ខ្នងទូរស័ព្ទ', icon: Smartphone },
+                { id: 'box', label: 'Package Box', labelKm: 'ប្រអប់ទំនិញ', icon: Package },
               ].map((mock) => {
                 const isSelected = state.mockupView === mock.id;
                 const IconComp = mock.icon;
