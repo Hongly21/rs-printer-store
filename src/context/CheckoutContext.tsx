@@ -221,6 +221,13 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setCurrentOrder(order);
     try {
       localStorage.setItem(LATEST_ORDER_STORAGE_KEY, JSON.stringify(order));
+      
+      // Append to device order history (stored in browser without needing database)
+      const existingHistoryRaw = localStorage.getItem('rs_printer_orders_history');
+      const history: Order[] = existingHistoryRaw ? JSON.parse(existingHistoryRaw) : [];
+      const updatedHistory = [order, ...history.filter((o) => o.orderNumber !== order.orderNumber)].slice(0, 25);
+      localStorage.setItem('rs_printer_orders_history', JSON.stringify(updatedHistory));
+
       localStorage.removeItem(CHECKOUT_STORAGE_KEY);
     } catch (e) {
       console.error('Failed to store order', e);

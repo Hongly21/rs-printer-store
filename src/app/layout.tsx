@@ -11,6 +11,10 @@ import { AddToCartToast } from '@/components/common/AddToCartToast';
 import { MobileBottomNav } from '@/components/common/MobileBottomNav';
 import { PwaInstallPrompt } from '@/components/common/PwaInstallPrompt';
 import { NavigationProgressBar } from '@/components/common/NavigationProgressBar';
+import { OrderGuideProvider } from '@/context/OrderGuideContext';
+import { InteractiveOrderGuide } from '@/components/guide/InteractiveOrderGuide';
+import { FloatingGuideButton } from '@/components/guide/FloatingGuideButton';
+import { LiveSpotlightTour } from '@/components/guide/LiveSpotlightTour';
 import { shopConfig } from '@/data/shop';
 
 export const viewport: Viewport = {
@@ -96,16 +100,21 @@ export default function RootLayout({
         <NavigationProgressBar />
         <ThemeProvider>
           <LanguageProvider>
-            <CartProvider>
-              <CheckoutProvider>
-                <Navbar />
-                <main className="flex-1 pb-20 md:pb-0">{children}</main>
-                <Footer />
-                <AddToCartToast />
-                <MobileBottomNav />
-                <PwaInstallPrompt />
-              </CheckoutProvider>
-            </CartProvider>
+            <OrderGuideProvider>
+              <CartProvider>
+                <CheckoutProvider>
+                  <Navbar />
+                  <main className="flex-1 pb-20 md:pb-0">{children}</main>
+                  <Footer />
+                  <AddToCartToast />
+                  <MobileBottomNav />
+                  <PwaInstallPrompt />
+                  <InteractiveOrderGuide />
+                  <FloatingGuideButton />
+                  <LiveSpotlightTour />
+                </CheckoutProvider>
+              </CartProvider>
+            </OrderGuideProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

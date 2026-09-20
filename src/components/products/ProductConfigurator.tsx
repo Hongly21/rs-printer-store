@@ -170,7 +170,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
         {/* Left Column: Product Showcase & Details */}
         <div className="lg:col-span-5 space-y-5 sm:space-y-6">
           {/* Main Product Image / Live Sticker Showcase */}
-          <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-sm relative overflow-hidden flex items-center justify-center aspect-square group">
+          <div id="tour-config-preview" className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-sm relative overflow-hidden flex items-center justify-center aspect-square group">
             {uploadedFile?.previewUrl ? (
               <div className="relative w-full h-full flex items-center justify-center p-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -304,7 +304,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
 
             {/* 1. Material Selector */}
             {product.options.materials && product.options.materials.length > 0 && (
-              <div className="space-y-3">
+              <div id="tour-config-material" className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5 text-brand-600" />
@@ -351,7 +351,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
 
             {/* 2. Size Selector */}
             {product.options.sizes && product.options.sizes.length > 0 && (
-              <div className="space-y-3">
+              <div id="tour-config-size" className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Maximize className="w-3.5 h-3.5 text-brand-600" />
@@ -370,13 +370,21 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
                         key={s.id}
                         type="button"
                         onClick={() => handleSizeChange(s.id)}
-                        className={`p-3 rounded-2xl border text-left transition-all active:scale-[0.98] cursor-pointer ${
+                        className={`p-3 rounded-2xl border text-left transition-all active:scale-[0.99] cursor-pointer ${
                           isSelected
                             ? 'border-brand-600 bg-brand-50/50 dark:bg-brand-950/40 ring-2 ring-brand-500/20 shadow-sm'
                             : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900'
                         }`}
                       >
-                        <span className="block font-bold text-xs text-slate-900 dark:text-white truncate">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-xs text-slate-900 dark:text-white">
+                            {s.dimensions || s.name}
+                          </span>
+                          {isSelected && (
+                            <CheckCircle2 className="w-4 h-4 text-brand-600 shrink-0" />
+                          )}
+                        </div>
+                        <span className="block text-[11px] text-slate-500 dark:text-slate-400 mt-1">
                           {tObj(s.name, s.nameKm)}
                         </span>
                         {s.dimensions && (
@@ -393,7 +401,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
 
             {/* 3. Finishing Selector (Optional) */}
             {product.options.finishings && product.options.finishings.length > 0 && (
-              <div className="space-y-3">
+              <div id="tour-config-finishing" className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Sliders className="w-3.5 h-3.5 text-brand-600" />
@@ -441,7 +449,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
             )}
 
             {/* 4. Quantity Selector */}
-            <div className="space-y-2">
+            <div id="tour-config-quantity" className="space-y-2">
               <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider block">
                 {t('configurator.printQuantity')}
               </label>
@@ -456,7 +464,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
             </div>
 
             {/* 5. Artwork Selection: Separate Ready Stickers vs Custom Upload Studio */}
-            <div className="space-y-4 pt-2">
+            <div id="tour-config-artwork" className="space-y-4 pt-2">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                 <label className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-brand-600" />
@@ -571,7 +579,7 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
             </div>
 
             {/* 6. Special Instructions Notes */}
-            <div className="space-y-1.5">
+            <div id="tour-config-notes" className="space-y-1.5">
               <label className="text-xs font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wider block">
                 {t('configurator.specialNotes')}
               </label>
@@ -584,26 +592,28 @@ export const ProductConfigurator: React.FC<ProductConfiguratorProps> = ({ produc
               />
             </div>
 
-            {/* 7. Live Price Summary Breakdown */}
-            <PriceSummary
-              calculation={priceResult}
-              quantity={config.quantity}
-            />
+            {/* 7. Live Price Summary Breakdown & Add to Cart Container */}
+            <div id="tour-config-price" className="space-y-4">
+              <PriceSummary
+                calculation={priceResult}
+                quantity={config.quantity}
+              />
 
-            {/* 8. Add to Cart CTA Button (Desktop) */}
-            <button
-              type="button"
-              onClick={handleAddToCart}
-              disabled={isAdding}
-              className="w-full py-4 px-6 rounded-2xl bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-base shadow-lg shadow-brand-600/25 transition-all flex items-center justify-center gap-3 disabled:opacity-75 cursor-pointer"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              <span>
-                {isAdding
-                  ? t('configurator.addingToCart')
-                  : `${t('configurator.addToCart')} • $${priceResult.totalPrice.toFixed(2)}`}
-              </span>
-            </button>
+              {/* 8. Add to Cart CTA Button (Desktop) */}
+              <button
+                type="button"
+                onClick={handleAddToCart}
+                disabled={isAdding}
+                className="w-full py-4 px-6 rounded-2xl bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-base shadow-lg shadow-brand-600/25 transition-all flex items-center justify-center gap-3 disabled:opacity-75 cursor-pointer"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                <span>
+                  {isAdding
+                    ? t('configurator.addingToCart')
+                    : `${t('configurator.addToCart')} • $${priceResult.totalPrice.toFixed(2)}`}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

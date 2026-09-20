@@ -9,6 +9,7 @@ import { Order } from '@/types';
 import { OrderStatusBadge } from '@/components/order/OrderStatusBadge';
 import { OrderTelegramShare } from '@/components/order/OrderTelegramShare';
 import { OrderTimelineTracker } from '@/components/order/OrderTimelineTracker';
+import { PrintInvoice } from '@/components/order/PrintInvoice';
 import { formatPrice, formatDate } from '@/lib/utils';
 import { shopConfig } from '@/data/shop';
 import { triggerConfetti } from '@/lib/confetti';
@@ -132,13 +133,16 @@ function OrderSuccessContent() {
         {/* Order Details Receipt Breakdown */}
         {order && (
           <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-8 shadow-sm space-y-6">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-              <h2 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">
-                {t('success.orderSummaryReceipt')}
-              </h2>
-              <span className="text-xs text-slate-500 dark:text-slate-400">
-                {t('success.placedOn')} {formatDate(order.createdAt)}
-              </span>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 gap-3">
+              <div>
+                <h2 className="text-lg font-black text-slate-900 dark:text-white tracking-tight">
+                  {t('success.orderSummaryReceipt')}
+                </h2>
+                <span className="text-xs text-slate-500 dark:text-slate-400">
+                  {t('success.placedOn')} {formatDate(order.createdAt)}
+                </span>
+              </div>
+              <PrintInvoice order={order} />
             </div>
 
             {/* Customer & Delivery Row */}

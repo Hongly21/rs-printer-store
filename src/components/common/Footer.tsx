@@ -135,6 +135,11 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/track" className="hover:text-brand-400 transition-colors">
+                  {tObj('Track Your Order', 'តាមដានការកុម្ម៉ង់')}
+                </Link>
+              </li>
+              <li>
                 <Link href="/cart" className="hover:text-brand-400 transition-colors">
                   {t('nav.cart')}
                 </Link>

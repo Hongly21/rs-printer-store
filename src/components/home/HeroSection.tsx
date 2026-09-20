@@ -42,6 +42,7 @@ export const HeroSection: React.FC = () => {
             {/* CTAs */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <Link
+                id="tour-hero-start"
                 href="/products"
                 className="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 active:scale-[0.99] text-white font-extrabold text-sm rounded-2xl shadow-xl shadow-brand-600/30 transition-all flex items-center justify-center gap-2 group"
               >

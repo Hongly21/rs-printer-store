@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Menu, X, Phone, MessageSquare, ArrowRight, Printer } from 'lucide-react';
+import { ShoppingBag, Menu, X, Phone, MessageSquare, ArrowRight, Printer, Sparkles } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useOrderGuide } from '@/context/OrderGuideContext';
 import { shopConfig } from '@/data/shop';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { ThemeToggle } from './ThemeToggle';
@@ -14,6 +15,7 @@ export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const { cartCount, isHydrated } = useCart();
   const { t, tObj } = useLanguage();
+  const { openGuide } = useOrderGuide();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,6 +35,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.products'), href: '/products' },
+    { name: tObj('Track Order', 'តាមដានការកុម្ម៉ង់'), href: '/track' },
     { name: t('nav.howItWorks'), href: '/#how-it-works' },
     { name: t('nav.contact'), href: '/contact' },
   ];
@@ -109,6 +112,7 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 href={link.href}
+                id={link.href === '/products' ? 'tour-nav-products' : undefined}
                 className={`text-sm font-bold transition-colors relative py-1 ${
                   isActive(link.href)
                     ? 'text-brand-600 dark:text-brand-400'
@@ -123,16 +127,31 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Right actions: Theme toggle, Language switcher, Cart button, CTA */}
+          {/* Right actions: Theme toggle, Language switcher, Guide, Cart button, CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Theme Toggle (Instant 1-click Sun/Moon) */}
-            <ThemeToggle />
+            {/* Interactive Guide Launcher Button */}
+            <button
+              onClick={() => openGuide(1)}
+              type="button"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700 transition-all active:scale-95 shadow-sm"
+              title="Interactive How to Order Guide"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
+              <span>{tObj('Guide', 'របៀបកុម្ម៉ង់')}</span>
+            </button>
 
-            {/* Language Switcher (Desktop - mobile has it in bottom nav and menu drawer) */}
-            <LanguageSwitcher className="hidden sm:inline-flex" />
+            {/* Theme & Language Group */}
+            <div id="tour-nav-theme-lang" className="flex items-center gap-2">
+              {/* Theme Toggle (Instant 1-click Sun/Moon) */}
+              <ThemeToggle />
+
+              {/* Language Switcher (Desktop - mobile has it in bottom nav and menu drawer) */}
+              <LanguageSwitcher className="hidden sm:inline-flex" />
+            </div>
 
             {/* Cart Link with Badge */}
             <Link
+              id="tour-nav-cart"
               href="/cart"
               aria-label="View shopping cart"
               className="relative p-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-brand-50 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700 transition-all flex items-center gap-2 group"
@@ -183,6 +202,22 @@ export const Navbar: React.FC = () => {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Mobile Guide Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openGuide(1);
+                }}
+                className="px-3 py-2.5 rounded-xl text-sm font-bold text-brand-700 dark:text-brand-300 bg-brand-50 dark:bg-brand-950/40 border border-brand-200 dark:border-brand-800 flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-500" />
+                  <span>{tObj('Interactive Order Guide', 'មគ្គុទ្ទេសក៍ណែនាំការកុម្ម៉ង់')}</span>
+                </div>
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
 
             {/* Quick settings row in mobile drawer */}
