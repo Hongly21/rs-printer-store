@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Sparkles, HelpCircle, Zap, Layers, X, ArrowRight } from 'lucide-react';
+import { BookOpen, HelpCircle, Zap, Layers, X, ArrowRight } from 'lucide-react';
 import { useOrderGuide } from '@/context/OrderGuideContext';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -43,7 +43,7 @@ export const FloatingGuideButton: React.FC = () => {
         <div className="absolute bottom-full right-0 mb-3 w-72 sm:w-80 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl p-3 text-slate-900 dark:text-white space-y-2 animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-brand-600" />
+              <BookOpen className="w-4 h-4 text-brand-600" />
               <span className="font-extrabold text-xs">
                 {tObj('Choose Guide Type', 'ជ្រើសរើសទម្រង់មគ្គុទ្ទេសក៍')}
               </span>
@@ -128,7 +128,7 @@ export const FloatingGuideButton: React.FC = () => {
         )}
 
         <div className="w-6 h-6 rounded-full bg-brand-500/20 dark:bg-slate-200 flex items-center justify-center text-brand-400 dark:text-brand-600 group-hover:text-white group-hover:bg-white/20 transition-colors">
-          <Sparkles className="w-3.5 h-3.5" />
+          <HelpCircle className="w-3.5 h-3.5" />
         </div>
 
         <div className="text-left">
