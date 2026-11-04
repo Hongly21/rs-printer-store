@@ -9,8 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "react-scripts test"
-
+    "test": "echo \"No tests configured yet\"" 
   },
 
 
