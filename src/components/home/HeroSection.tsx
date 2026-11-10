@@ -7,8 +7,21 @@ import { ArrowRight, ShoppingBag, CheckCircle, Sparkles, ShieldCheck, Zap } from
 import { Badge } from '@/components/common/Badge';
 import { useLanguage } from '@/context/LanguageContext';
 
+
+
+
 export const HeroSection: React.FC = () => {
   const { t, tObj } = useLanguage();
+  // wriite fail code for testing sonaqure to scann qulity fail 
+  const testFailCode = () => {
+    const a = 1;
+    const b = 2;
+    if (a = b) { // This is an intentional mistake (assignment instead of comparison)
+      console.log('This will always execute');
+    }
+  };
+
+  testFailCode();
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 pt-12 pb-20 lg:pt-20 lg:pb-28">
