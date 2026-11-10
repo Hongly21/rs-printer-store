@@ -12,35 +12,36 @@ import { useLanguage } from '@/context/LanguageContext';
 
 export const HeroSection: React.FC = () => {
     const { t, tObj } = useLanguage();
+
     // wriite fail code for testing sonaqure to scann qulity fail 
-    let username: string = "mr.vath";
-  let password: string = "1234verysecured";
+  //   let username: string = "mr.vath";
+  // let password: string = "1234verysecured";
 
-  const greeting = (): void => {
-    console.log("Welcome to TypeScript");
-  };
+  // const greeting = (): void => {
+  //   console.log("Welcome to TypeScript");
+  // };
 
-  // Extracted magic numbers into constants and removed duplication
-  const TAX_RATE = 0.15;
-  const SERVICE_FEE_RATE = 0.10;
+  // // Extracted magic numbers into constants and removed duplication
+  // const TAX_RATE = 0.15;
+  // const SERVICE_FEE_RATE = 0.10;
 
-  const calculatePrice = (price: number): number => {
-      return price * TAX_RATE + price * SERVICE_FEE_RATE;
-  };
+  // const calculatePrice = (price: number): number => {
+  //     return price * TAX_RATE + price * SERVICE_FEE_RATE;
+  // };
 
-  const calculateDiscount = (price: number): number => {
-      return price * TAX_RATE + price * SERVICE_FEE_RATE;
-  };
+  // const calculateDiscount = (price: number): number => {
+  //     return price * TAX_RATE + price * SERVICE_FEE_RATE;
+  // };
 
-  // Empty function with a void return type
-  const deleteUser = (): void => {
-      // Implementation needed
-  };
+  // // Empty function with a void return type
+  // const deleteUser = (): void => {
+  //     // Implementation needed
+  // };
 
-  // Unused function properly typed
-  const calculateSalary = (salary: number, bonus: number): number => {
-      return salary + bonus;
-  };
+  // // Unused function properly typed
+  // const calculateSalary = (salary: number, bonus: number): number => {
+  //     return salary + bonus;
+  // };
 
 
   
