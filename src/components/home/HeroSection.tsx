@@ -11,17 +11,39 @@ import { useLanguage } from '@/context/LanguageContext';
 
 
 export const HeroSection: React.FC = () => {
-  const { t, tObj } = useLanguage();
-  // wriite fail code for testing sonaqure to scann qulity fail 
-  const testFailCode = () => {
-    const a = 1;
-    const b = 2;
-    if (a = b) { // This is an intentional mistake (assignment instead of comparison)
-      console.log('This will always execute');
-    }
+    const { t, tObj } = useLanguage();
+    // wriite fail code for testing sonaqure to scann qulity fail 
+    let username: string = "mr.vath";
+  let password: string = "1234verysecured";
+
+  const greeting = (): void => {
+    console.log("Welcome to TypeScript");
   };
 
-  testFailCode();
+  // Extracted magic numbers into constants and removed duplication
+  const TAX_RATE = 0.15;
+  const SERVICE_FEE_RATE = 0.10;
+
+  const calculatePrice = (price: number): number => {
+      return price * TAX_RATE + price * SERVICE_FEE_RATE;
+  };
+
+  const calculateDiscount = (price: number): number => {
+      return price * TAX_RATE + price * SERVICE_FEE_RATE;
+  };
+
+  // Empty function with a void return type
+  const deleteUser = (): void => {
+      // Implementation needed
+  };
+
+  // Unused function properly typed
+  const calculateSalary = (salary: number, bonus: number): number => {
+      return salary + bonus;
+  };
+
+
+  
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/70 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 pt-12 pb-20 lg:pt-20 lg:pb-28">
